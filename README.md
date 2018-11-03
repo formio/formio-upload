@@ -7,44 +7,51 @@ to determine if a user has permissions to upload or download based on their acce
 ## Getting Started
 This library can be ran within 3 different environments.
 
-  1.) Locally using Node.js
-  2.) Docker container
-  3.) AWS Lambda
+  1. Locally using Node.js
+  2. Docker container
+  3. AWS Lambda
   
 ### Running locally with Node.js
 In order to run this server locally, you can type the following within your terminal.
 
-  npm install
-  node index
+```
+npm install
+node index
+```
 
 ### Running within Docker
 To run this with docker, you can use the following commands.
 
-  docker run -itd \
-    -e "PORT=4100" \
-    -e "MAX_UPLOAD_SIZE=16mb" \
-    -e "DEBUG=*" \
-    -e "PROVIDERS=file,alfresco" \
-    -e "UPLOAD_DIR=" \
-    -e "ALFRESCO_USER=admin" \
-    -e "ALFRESCO_PASS=admin" \
-    -e "ALFRESCO_HOST=http://127.0.0.1:8082" \
-    --restart unless-stopped \
-    --name formio-upload \
-    -p 4100:4100 \
-    formio/formio-upload
+```
+docker run -itd \
+  -e "PORT=4100" \
+  -e "MAX_UPLOAD_SIZE=16mb" \
+  -e "DEBUG=*" \
+  -e "PROVIDERS=file,alfresco" \
+  -e "UPLOAD_DIR=" \
+  -e "ALFRESCO_USER=admin" \
+  -e "ALFRESCO_PASS=admin" \
+  -e "ALFRESCO_HOST=http://127.0.0.1:8082" \
+  --restart unless-stopped \
+  --name formio-upload \
+  -p 4100:4100 \
+  formio/formio-upload
+```
 
 ### Running within AWS Lambda
 Before you can run with AWS Lambda, you must first install [Claudia](https://claudiajs.com).
 
-  npm install claudia -g
-  
+```
+npm install claudia -g
+```
+
 Next, you will want to configure your access credentials to the AWS CLI. You can do this by following the instructions @ [https://claudiajs.com/tutorials/installing.html](https://claudiajs.com/tutorials/installing.html)
 
 Once you have access setup, you can now modify the deploy scripts within ```package.json``` to change where this script will be deployed. Once you have made changes to the ```deploy``` script within ```package.json```, you can now run the following to deploy this within AWS Lambda using the deploy script.
 
-  npm run deploy
-  
+```
+npm run deploy
+```  
   
 ### Environment Variables. 
 You must use Environment variables to configure the runtime operation of this server. When running this server locally using Node.js, you can set the Environment variables within the ```.env``` file. These variables are defined as follows.
