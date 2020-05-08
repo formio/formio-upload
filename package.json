@@ -23,7 +23,7 @@
     "express": "^4.16.4",
     "formiojs": "^3.6.13",
     "fs-extra": "^7.0.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "method-override": "^3.0.0",
     "multer": "^1.4.1",
     "request": "^2.88.0",
