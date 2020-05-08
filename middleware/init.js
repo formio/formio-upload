@@ -1,5 +1,5 @@
 const debug = require('debug');
-const uuid = require('uuid/v4');
+const { v4: uuid } = require('uuid');
 module.exports = function(namespace) {
   const log = debug(namespace);
   return function initialize(req, res, next) {
