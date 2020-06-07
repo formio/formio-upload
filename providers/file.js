@@ -6,7 +6,7 @@ class LocalProvider extends Provider {
   static upload(file, dir) {
     const localDir = `${uploadDir}/${dir}`;
     return fs.ensureDir(localDir).then(() => {
-      return fs.move(file.path, `${localDir}/${file.filename}`).then(() => {
+      return fs.copy(file.path, `${localDir}/${file.filename}`).then(() => {
         file.url = '/' + encodeURIComponent(`${dir}/${file.filename}`);
         return file;
       });
