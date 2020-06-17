@@ -3,8 +3,9 @@ const multer  = require('multer');
 const upload = multer({
   dest: os.tmpdir()
 });
+
 module.exports = function uploadFile(req, res, next) {
-  req.debug(`Uploading file`);
+  req.debug('Uploading file');
   upload.single('file')(req, res, (err) => {
     if (err) {
       return next(err);

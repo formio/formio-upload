@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const middleware = require('./middleware');
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json({
   limit: (process.env.MAX_UPLOAD_SIZE || '16mb')
@@ -13,7 +14,7 @@ app.use(bodyParser.json({
 app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.get('/status', (req, res, next) => {
-  res.json({version: pkg.version});
+  res.json({ version: pkg.version });
 });
 
 /**
@@ -47,7 +48,7 @@ app.addProvider = function(name, Provider) {
     },
     middleware.init('downloadToken'),
     middleware.tempToken,
-    (req, res) => res.json({url: req.body.url})
+    (req, res) => res.json({ url: req.body.url })
   );
 
   // Upload a file.
@@ -78,6 +79,7 @@ app.addProvider = function(name, Provider) {
 if (process.env.PROVIDERS) {
   const enabled = process.env.PROVIDERS.split(',');
   const providers = require('./providers');
+
   _.each(providers, (Provider, name) => {
     if (enabled.includes(name)) {
       app.addProvider(name, Provider);
