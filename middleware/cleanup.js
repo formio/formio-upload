@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const _ = require('lodash');
+
 module.exports = (req, res, next) => {
   if (!req.cleanup || !req.cleanup.length) {
     req.debug('Nothing to cleanup');

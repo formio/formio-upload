@@ -1,5 +1,6 @@
 const request = require('request');
 const _ = require('lodash');
+
 module.exports = function tempToken(req, res, next) {
   if (!req.body || !req.body.url) {
     return next('No file url provided.');
@@ -28,7 +29,7 @@ module.exports = function tempToken(req, res, next) {
   // If a project is provided and we are authenticated, then we can fetch a temp token that can only access
   // this submission for a limited time period.
   if (project && req.headers['x-jwt-token']) {
-    request.get({
+    return request.get({
       url: `${url}/token`,
       json: true,
       headers: {
@@ -46,7 +47,5 @@ module.exports = function tempToken(req, res, next) {
       next();
     });
   }
-  else {
-    next();
-  }
+  return next();
 };

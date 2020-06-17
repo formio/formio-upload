@@ -5,11 +5,12 @@ const alfrescoApi = new AlfrescoApi({
   provider:'ECM',
   hostEcm:process.env.ALFRESCO_HOST
 });
+
 class AlfrescoProvider extends Provider {
   static auth(req, res, next) {
     req.debug('Authenticating');
-    alfrescoApi.login(process.env.ALFRESCO_USER, process.env.ALFRESCO_PASS).then(function (data) {
-      req.debug('Authenticated:' + JSON.stringify(data));
+    alfrescoApi.login(process.env.ALFRESCO_USER, process.env.ALFRESCO_PASS).then(function(data) {
+      req.debug(`Authenticated:${JSON.stringify(data)}`);
       req.ticket = data.ticket;
       next();
     }, (err) => next(JSON.stringify(err)));
