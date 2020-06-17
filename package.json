@@ -3,8 +3,12 @@
   "version": "1.2.0",
   "description": "A file upload server/proxy for use with Form.io File components",
   "main": "index.js",
+  "pre-commit": [
+    "lint"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore .",
     "start": "node index",
     "deploy": "claudia create --name formio-upload --handler lambda.handler --config claudia.json --deploy-proxy-api --region us-west-2",
     "update": "VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]' | sed 's/[\\.]/-/g');claudia update --config claudia.json --version \"v${VERSION}\"",
