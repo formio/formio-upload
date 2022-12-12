@@ -70,8 +70,7 @@ You must use Environment variables to configure the runtime operation of this se
 
 ## Configure Form Upload
 Now that you have the server running, you can configure a Form.io Form with a new File component.
-
-![Alt text](https://monosnap.com/image/hyuWKj6MGKMFvNXQ5Es1XqOE5M3CCc.png)
+https://help.form.io/userguide/forms/premium-components#file
 
 Within the configuration of this File component, you will need to set the file upload type to **URL** and then provide the URL of this service. You can decide which upload provider to use based on the path you provide to the url of the running server.
 
@@ -80,8 +79,6 @@ For example:
  - **http://localhost:4100/file** - Uses the local file upload provider.
  - **http://localhost:4100/alfresco** - Uses the Alfresco ECM upload provider.
  
-You will also need to make sure you check **Private Download**. Your configuration should look something like the following.
-
-![Alt text](https://monosnap.com/image/OVJ2E3kJA63xbhPlrCaKj3ecPOxsGw.png)
+You will also need to make sure you check **Private Download**. 
 
 The upload will now function against this server.
